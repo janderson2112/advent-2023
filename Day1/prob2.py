@@ -25,13 +25,9 @@ def replaceNum(num):
                 return '9'
 
 sum = 0
-strList = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 with open('input.txt') as input:
     for line in input:
         line = line.rstrip()
-        print(line)
-        regex = re.compile(r'[0-9]|one|two|three|four|five|six|seven|eight|nine')
-        numList = regex.findall(line)
+        numList = re.findall(r'(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))', line)
         sum += int(replaceNum(numList[0]) + replaceNum(numList[-1]))
-        print(replaceNum(numList[0]) + replaceNum(numList[-1]))
 print(sum)
